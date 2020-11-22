@@ -21,6 +21,7 @@
       <div>
         <label for="email">email input type: </label>
         <input type="email" id="email" name="email" required>
+        <error-output class="email-error" for="text"></error-output>
       </div>
       <div>
         <label for="url">url input type: </label>
@@ -53,12 +54,11 @@
       </div>
     </form>
     <script>
-        const salary=document.querySelector('#salary');
-        const salaryOutput=document.querySelector('.salary-output');
-        salary.oninput=function(){
-            salaryOutput.textContent=salary.value;
-        };
-
+        const salary = document.querySelector('#salary');
+            const salaryOutput = document.querySelector('.salary-output');
+            salary.oninput = function () {
+                salaryOutput.textContent = salary.value;
+            };
         // UC 1: Name validation
         const text=document.querySelector('#text');
         const textError=document.querySelector('.text-error');
@@ -70,6 +70,16 @@
             else 
             textError.textContent="Incorrect name";
         });
+          // UC 2 : Email validation
+          const emailInput = document.querySelector("#email");
+            const errorEmail = document.querySelector(".email-error");
+            emailInput.addEventListener('input', function () {
+                let emailRegex = RegExp('^^[a-zA-Z0-9]+([.+_-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+([.][a-zA-Z]{3})+([.][a-zA-Z]{2})?$');
+                if (emailRegex.test(emailInput.value))
+                    errorEmail.textContent = "";
+                else
+                    errorEmail.textContent = "Invalid email"
+            });
     </script>
 </body>
 </html>
