@@ -76,7 +76,7 @@
           const emailInput = document.querySelector("#email");
             const errorEmail = document.querySelector(".email-error");
             emailInput.addEventListener('input', function () {
-                let emailRegex = RegExp('^^[a-zA-Z0-9]+([.+_-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+([.][a-zA-Z]{3})+([.][a-zA-Z]{2})?$');
+                let emailRegex = RegExp('^[a-zA-Z0-9]+([.+_-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+([.][a-zA-Z]{3})+([.][a-zA-Z]{2})?$');
                 if (emailRegex.test(emailInput.value))
                     errorEmail.textContent = "";
                 else
@@ -92,11 +92,11 @@
                 else
                     errorMobile.textContent = "Invalid number"
             });
-            // UC 4 : Password Validation
+            // UC 4 and 5: Password Validation
             const password = document.querySelector("#pwd");
             const errorPwd = document.querySelector(".pwd-error");
             password.addEventListener('input', function () {
-                let pwdRegex = RegExp("^.{8,}$");
+              let pwdRegex = RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=.*[^0-9a-zA-Z])(?!.*[^0-9a-zA-Z].*[^0-9a-zA-Z]).{8,}$");
                 if (pwdRegex.test(password.value))
                     errorPwd.textContent = "";
                 else
